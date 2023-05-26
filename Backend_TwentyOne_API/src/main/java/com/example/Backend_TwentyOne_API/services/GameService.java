@@ -547,6 +547,7 @@ public class GameService {
 //        used in createGame method to create game depending on inputted gameType
     public ResponseEntity<Reply> createGameByType(GameType gameType, Optional<Player> player){
         Game game = new Game(player.get(), gameType);
+        gameRepository.save(game);
         Reply reply = new Reply(0,
                 false,
                 "Create new game with id " + game.getId() + " with lead player " + player.get().getName());
